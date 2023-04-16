@@ -18,7 +18,7 @@ const App = () => {
     if (query !== '') {
       fetchImages();
     }
-  }, [query]);
+  }, [query,fetchImages]);
 
   const fetchImages = () => {
     const API_KEY = '33770960-9441e00aea4c2d2fce88c05cc';
