@@ -5,11 +5,11 @@ import css from './Searchbar.module.css';
 const Searchbar = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(searchQuery);
     setSearchQuery('');
@@ -34,7 +34,7 @@ const Searchbar = ({ onSubmit }) => {
       </form>
     </header>
   );
-}
+};
 
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,

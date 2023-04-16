@@ -8,6 +8,6 @@ const Loader = () => {
       <Audio />
     </div>
   );
-}
+};
 
 export default Loader;

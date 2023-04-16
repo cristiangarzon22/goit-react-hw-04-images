@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
-import Button from './Button/Button'; 
+import Button from './Button/Button';
 import Modal from './Modal/Modal';
 import css from './App.module.css';
 
@@ -28,16 +28,16 @@ const App = () => {
     setLoading(true);
 
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        setImages(prevImages => [...prevImages, ...data.hits]);
-        setPage(prevPage => prevPage + 1);
+      .then((response) => response.json())
+      .then((data) => {
+        setImages((prevImages) => [...prevImages, ...data.hits]);
+        setPage((prevPage) => prevPage + 1);
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   };
 
-  const handleFormSubmit = query => {
+  const handleFormSubmit = (query) => {
     setQuery(query);
     setImages([]);
     setPage(1);
@@ -47,7 +47,7 @@ const App = () => {
     fetchImages();
   };
 
-  const handleImageClick = largeImageURL => {
+  const handleImageClick = (largeImageURL) => {
     setShowModal(true);
     setLargeImageURL(largeImageURL);
   };
@@ -67,16 +67,14 @@ const App = () => {
       {images.length > 0 && !loading && (
         <Button onClick={handleLoadMoreClick} />
       )}
-      // ...
-{showModal && (
-  <Modal onClose={handleCloseModal} >
-    <img src={largeImageURL} alt="" />
-  </Modal>
-)}
-// ...
 
+      {showModal && (
+        <Modal onClose={handleCloseModal}>
+          <img src={largeImageURL} alt="" />
+        </Modal>
+      )}
     </div>
   );
-}
+};
 
 export default App;
