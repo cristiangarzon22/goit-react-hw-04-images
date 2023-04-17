@@ -18,7 +18,6 @@ const App = () => {
     const API_KEY = '33770960-9441e00aea4c2d2fce88c05cc';
     const BASE_URL = 'https://pixabay.com/api/';
     const url = `${BASE_URL}?key=${API_KEY}&q=${query}&page=${page}&per_page=12`;
-
     setLoading(true);
 
     fetch(url)
