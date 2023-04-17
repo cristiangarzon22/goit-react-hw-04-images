@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
-const ImageGallery = ({ images, onClick }) => {
+const ImageGallery = ({ images ,onClick}) => {
   return (
     <div className="galley">
       <ul className={css.ImageGallery}>
@@ -18,6 +18,7 @@ const ImageGallery = ({ images, onClick }) => {
     </div>
   );
 };
+
 
 ImageGallery.propTypes = {
   images: PropTypes.array.isRequired,
