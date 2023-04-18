@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Loader from './Loader/Loader';
@@ -14,7 +14,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [largeImageURL, setLargeImageURL] = useState('');
 
-  const fetchImages = useCallback(() => {
+  const fetchImages =() => {
     const API_KEY = '33770960-9441e00aea4c2d2fce88c05cc';
     const BASE_URL = 'https://pixabay.com/api/';
     const url = `${BASE_URL}?key=${API_KEY}&q=${query}&page=${page}&per_page=12`;
@@ -28,13 +28,13 @@ const App = () => {
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  }, [query, page]);
+  };
 
   useEffect(() => {
     if (query !== '') {
       fetchImages();
     }
-  }, [query, fetchImages]);
+  }, [fetchImages]);
 
   const handleFormSubmit = (query) => {
     setQuery(query);

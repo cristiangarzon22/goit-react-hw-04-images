@@ -26,7 +26,7 @@ const Modal = ({ onClose, children }) => {
           className={css.CloseButton}
           onClick={onClose}
         >
-          &times;
+         x
         </button>
       </div>
     </div>
