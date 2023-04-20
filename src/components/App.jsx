@@ -6,6 +6,7 @@ import Button from './Button/Button';
 import Modal from './Modal/Modal';
 import css from './App.module.css';
 
+
 const App = () => {
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState('');
@@ -30,16 +31,26 @@ const App = () => {
       .finally(() => setLoading(false));
   };
 
-  useEffect(() => {
+
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  //useEffect(() => {
+   // if (query !== '') {
+   //   fetchImages();
+   // }
+  //}, [fetchImages]);
+
+  const handleFormSubmit = () => {
+    //setQuery(query);
+    
+    setImages([]);
+    //setPage(1);
     if (query !== '') {
       fetchImages();
+      setPage(1);
     }
-  }, [fetchImages]);
-
-  const handleFormSubmit = (query) => {
-    setQuery(query);
-    setImages([]);
-    setPage(1);
   };
 
   const handleLoadMoreClick = () => {
@@ -55,10 +66,10 @@ const App = () => {
     setShowModal(false);
     setLargeImageURL('');
   };
-
+  // change={handleInputChange}
   return (
     <div className={css.App}>
-      <Searchbar onSubmit={handleFormSubmit} valor={query} />
+      <Searchbar onSubmit={handleFormSubmit}  query={query} change={handleInputChange}/>
       {images.length > 0 && (
         <ImageGallery images={images} onClick={handleImageClick} />
       )}
