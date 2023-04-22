@@ -1,24 +1,24 @@
-
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import css from './Searchbar.module.css';
 
-const Searchbar = ({ onSubmit ,query,change}) => {
-  //const [searchQuery, setSearchQuery] = useState('');
+const Searchbar = ({ onSubmit }) => {
+  const [searchQuery, setSearchQuery] = useState('');
 
-  //const handleInputChange = (e) => {
-    //setSearchQuery(e.target.value);
-  //};
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
-  //const handleSubmit = (e) => {
-   // e.preventDefault();
-    //onSubmit(searchQuery);
-    //setSearchQuery('');
-  //};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(searchQuery);
+    setSearchQuery('');
+  };
 
   return (
     <header className={css.Searchbar}>
-      <form className={css.SearchForm} onSubmit={onSubmit}>
-        <button onSubmit={onSubmit} className={css.SearchFormbutton}>
+      <form className={css.SearchForm} onSubmit={handleSubmit}>
+        <button type='submit' className={css.SearchFormbutton}>
           <span className={css.SearchFormbuttonlabel}>Search</span>
         </button>
 
@@ -28,8 +28,8 @@ const Searchbar = ({ onSubmit ,query,change}) => {
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
-          value={query}
-          onChange={change}
+          value={searchQuery}
+          onChange={handleInputChange}
         />
       </form>
     </header>

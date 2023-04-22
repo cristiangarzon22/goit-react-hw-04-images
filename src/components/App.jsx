@@ -9,7 +9,7 @@ import css from './App.module.css';
 
 const App = () => {
   const [images, setImages] = useState([]);
-  const [query, setQuery] = useState('');
+  //const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -31,26 +31,15 @@ const App = () => {
       .finally(() => setLoading(false));
   };
 
-
-  const handleInputChange = (e) => {
-    setQuery(e.target.value);
-  };
-
-  //useEffect(() => {
-   // if (query !== '') {
-   //   fetchImages();
-   // }
-  //}, [fetchImages]);
-
-  const handleFormSubmit = () => {
-    //setQuery(query);
-    
-    setImages([]);
-    //setPage(1);
+  useEffect(() => {
     if (query !== '') {
       fetchImages();
-      setPage(1);
     }
+  }, [fetchImages]);
+
+  const handleFormSubmit = (searchQuery) => {
+    setImages([]);
+    setPage(1);
   };
 
   const handleLoadMoreClick = () => {
@@ -69,7 +58,7 @@ const App = () => {
   // change={handleInputChange}
   return (
     <div className={css.App}>
-      <Searchbar onSubmit={handleFormSubmit}  query={query} change={handleInputChange}/>
+      <Searchbar onSubmit={handleFormSubmit}/>
       {images.length > 0 && (
         <ImageGallery images={images} onClick={handleImageClick} />
       )}
