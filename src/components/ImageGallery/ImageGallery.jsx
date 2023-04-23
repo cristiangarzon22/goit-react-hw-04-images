@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 
-const ImageGallery = ({ images ,onClick}) => {
+const ImageGallery = ({id, images ,onClick}) => {
   return (
     <div className="galley">
       <ul className={css.ImageGallery}>
-        {images.map(({ id, webformatURL, largeImageURL }) => (
+        {images.map(({  webformatURL, largeImageURL }) => (
           <ImageGalleryItem
             key={id}
-            image={{ id, webformatURL, largeImageURL }}
+            image={{  webformatURL, largeImageURL }}
             onClick={() => onClick(largeImageURL)}
           />
         ))}

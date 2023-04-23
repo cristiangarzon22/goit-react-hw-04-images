@@ -2,12 +2,11 @@ import React from 'react';
 import css from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
-const ImageGalleryItem = ({ image, onClick ,key}) => {
+const ImageGalleryItem = ({ image, onClick }) => {
   const { webformatURL } = image;
   return (
     <li className={css.ImageGalleryItem}>
       <img
-        key={key}
         src={webformatURL}
         alt=""
         className={css.ImageGalleryItemimage}
