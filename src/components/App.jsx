@@ -11,6 +11,9 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [largeImageURL, setLargeImageURL] = useState('');
+
   
   useEffect(() => {
     if (!searchInfo) {
@@ -31,6 +34,19 @@ const App = () => {
     setPage(1);
     setImages([]);
   }; 
+  const handleLoadMoreClick = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  const handleImageClick = (largeImageURL) => {
+    setShowModal(true);
+    setLargeImageURL(largeImageURL);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setLargeImageURL('');
+  };
 
   return (
     <div className={css.App}>
